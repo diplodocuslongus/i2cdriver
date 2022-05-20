@@ -1,3 +1,4 @@
+# https://electricdollarstore.com/led.html
 import sys
 import time
 
@@ -9,8 +10,12 @@ if __name__ == '__main__':
     d = EDS.LED(i2)
     TEAL    = 0x008080
     ORANGE  = 0xffa500
-    while 1:
-        time.sleep(1)
-        d.hex(TEAL, 3)
-        time.sleep(1)
-        d.hex(ORANGE, 3)
+    try:
+        while 1:
+            time.sleep(1)
+            d.hex(TEAL, 3)
+            time.sleep(1)
+            d.hex(ORANGE, 3)
+    except:
+        print('keyboard interrupt turning off')
+        d.hex(0x000000, 0)
